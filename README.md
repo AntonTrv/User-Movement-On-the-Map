@@ -1,3 +1,7 @@
+# Important for Reviewers
+
+ By default axios-mock generates a random number (1-100) coordinates. The App itself keeps only 100 of last returned values for each user. So technically the algorythm works according to the task. 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

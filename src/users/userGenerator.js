@@ -11,10 +11,10 @@ const generateRandomCoords = () => {
 
     let randCoords = [
         {
-        startLat: Math.random() * (maxLat - minLat) + minLat,
-        startLon: Math.random() * (maxLon - minLon) + minLon,
-        start: new Date(new Date().setHours(new Date().getHours() - 1)).toLocaleString(),
-    },
+            startLat: Math.random() * (maxLat - minLat) + minLat,
+            startLon: Math.random() * (maxLon - minLon) + minLon,
+            start: new Date(new Date().setHours(new Date().getHours() - 1)).toLocaleString(),
+        },
         {
             endLat: Math.random() * (maxLat - minLat) + minLat,
             endLon: Math.random() * (maxLon - minLon) + minLon,
@@ -51,5 +51,3 @@ export const generateUsers = (num) => { //hardcoded for mocking reasons
 
     return users
 }
-
-

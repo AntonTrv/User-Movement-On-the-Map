@@ -9,6 +9,7 @@ const PreloaderWrapper = styled.div`
    justify-content: center;
    align-items: center;
    margin: auto;
+   
   div {
   width: 50px;
   height: 50px;

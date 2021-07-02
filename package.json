@@ -10,6 +10,7 @@
     "@testing-library/react": "^11.2.7",
     "@testing-library/user-event": "^12.8.3",
     "axios-mock-adapter": "^1.19.0",
+    "eslint-plugin-react-hooks": "^4.2.1-alpha-6bf111772-20210701",
     "google-maps-react": "^2.0.6",
     "nanoid": "^3.1.23",
     "react": "^17.0.2",
@@ -47,5 +48,7 @@
   },
   "devDependencies": {
     "axios": "^0.21.1"
-  }
+  },
+  "main": "index.js",
+  "homepage": "."
 }

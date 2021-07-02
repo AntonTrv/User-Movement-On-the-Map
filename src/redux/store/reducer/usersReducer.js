@@ -10,6 +10,14 @@ const ticketsReducer = (state = initialState, action) => {
             return {...state, loading: false, currentUsers: action.payload}
         case actions.FETCH_USER_ERROR:
             return {...state, loading: false, error: action.payload}
+        case actions.REFRESH_USER:
+            return {...state}
+        case actions.REFRESH_USER_SUCCESS:
+            return {...state, currentUsers: action.payload}
+        case actions.REFRESH_USER_ERROR:
+            return {...state, error: action.payload}
+            case actions.SHOULD_REFRESH:
+            return {...state, refresh: !state.refresh}
         default:
             return state
 

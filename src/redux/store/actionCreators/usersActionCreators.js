@@ -1,7 +1,7 @@
 import axios from "axios";
 import * as actionTypes from '../actionTypes/index'
 import MockAdapter from 'axios-mock-adapter'
-import {generateUsers} from '../../../userGenerator'
+import {generateUsers} from '../../../users/userGenerator'
 
 //generate random server delay
 const serverDelay =(min, max) => {
@@ -59,3 +59,37 @@ export const fetchUsers = (id) => {
     }
 }
 
+export const refreshUsers = (id) => {
+
+    return async (dispatch) => {
+        try {
+            dispatch({type: actionTypes.REFRESH_USER})
+
+            const response = await axios
+                .get("/users", {params: {id: id}})
+                .then(function (response) {
+                    return response.data;
+                });
+
+            dispatch({type: actionTypes.REFRESH_USER_SUCCESS, payload: response})
+
+        } catch (err) {
+            dispatch({
+                type: actionTypes.REFRESH_USER_ERROR,
+                payload: err.message
+            })
+        }
+    }
+}
+
+
+export const shouldRefresh = () => {
+
+    return async (dispatch) => {
+        try {
+            dispatch ({type: actionTypes.SHOULD_REFRESH})
+        } catch (err) {
+            console.log(err)
+        }
+    }
+}

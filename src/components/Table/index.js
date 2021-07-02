@@ -3,6 +3,7 @@ import styled from "styled-components";
 import {nanoid} from "nanoid";
 import Map from "../Map";
 import { LoadScript } from "@react-google-maps/api";
+import {useActions} from "../../redux/store/actionCreators";
 
 //API key import from .env file
 const API_KEY = process.env.REACT_APP_API_KEY
@@ -68,10 +69,14 @@ const CloseBtn = styled.div`
   }
 `
 
+const lib = ["places"];
+
+
 const Table = ({activeUser}) => {
 
+    const {shouldRefresh} = useActions()
+
     //gMap requirements
-    const lib = ["places"];
     const key = API_KEY;
 
     //modal visibility state for map
@@ -84,6 +89,7 @@ const Table = ({activeUser}) => {
     const handleClick = (coords) => {
         setModalVisibility(!modalVisibility)
         setEndpoints(coords)
+        shouldRefresh()
     }
 
 

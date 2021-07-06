@@ -88,9 +88,9 @@ const Table = ({activeUser}) => {
 
     // show/hide map + endpoints passing
     const handleClick = (coords) => {
-        shouldRefresh()
         setModalVisibility(!modalVisibility)
         setEndpoints(coords)
+        shouldRefresh()
     }
 
 

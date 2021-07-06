@@ -53,7 +53,7 @@ function App() {
     //refresh data each time select input changes
     useEffect(() => {
         dispatch(ActionCreators.fetchUsers(selectValue))
-    },[selectValue, dispatch,refresh])
+    },[selectValue, dispatch])
 
 
     useEffect(() => {
@@ -124,7 +124,7 @@ function App() {
         <div className="App">
             {
                 <>
-                    <SelectWrapper>
+                    {allUsers.length &&  <SelectWrapper>
                         <FormControl className={classes.formControl}>
                             <InputLabel id="demo-simple-select-label">Choose a user</InputLabel>
                             <Select
@@ -137,7 +137,7 @@ function App() {
                                 )}
                             </Select>
                         </FormControl>
-                    </SelectWrapper>
+                    </SelectWrapper>}
 
                     {loading && <Preloader/>}
                     {(allUsers.length) && <Table activeUser={allUsers[selectValue]}/>}

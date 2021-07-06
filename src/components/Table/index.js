@@ -74,6 +74,7 @@ const lib = ["places"];
 
 const Table = ({activeUser}) => {
 
+
     const {shouldRefresh} = useActions()
 
     //gMap requirements
@@ -87,9 +88,9 @@ const Table = ({activeUser}) => {
 
     // show/hide map + endpoints passing
     const handleClick = (coords) => {
+        shouldRefresh()
         setModalVisibility(!modalVisibility)
         setEndpoints(coords)
-        shouldRefresh()
     }
 
 

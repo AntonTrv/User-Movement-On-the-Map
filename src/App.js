@@ -29,7 +29,6 @@ const useStyles = makeStyles((theme) => ({
 function App() {
     //materialUI
     const classes = useStyles();
-
     //constant data about all users for rendering
     const [allUsers, setAllUsers] = useState([])
 
@@ -74,8 +73,8 @@ function App() {
                 } : user )
 
                 //return last 100 values if exceeds limit length of 100
-                if(updatedUser[0].coordinates.length > 100){
-                    updatedUser[0].coordinates = updatedUser[0].coordinates.slice(-100)
+                if(updatedUser[selectValue].coordinates.length > 100){
+                    updatedUser[selectValue].coordinates = updatedUser[selectValue].coordinates.slice(-100)
                     return[...updatedUser]
                 }
                 //return updated state with new values of user
@@ -85,7 +84,6 @@ function App() {
             return[...prevState,...currentUsers]
         })
     }, [currentUsers]) // eslint-disable-line
-
 
 
     useEffect(() => {
@@ -119,6 +117,7 @@ function App() {
         )
 
     }
+
 
     return (
 

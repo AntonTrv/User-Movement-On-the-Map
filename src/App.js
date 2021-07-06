@@ -53,18 +53,32 @@ function App() {
     //refresh data each time select input changes
     useEffect(() => {
         dispatch(ActionCreators.fetchUsers(selectValue))
-    },[selectValue, dispatch])
+    },[selectValue, dispatch,refresh])
 
+
+    useEffect(() => {
+        let interval
+        if(refresh) {
+            const MINUTE_MS = 4000;// update frequency
+            interval = setInterval(() => {
+                dispatch(ActionCreators.refreshUsers())
+
+            }, MINUTE_MS);
+        }
+
+        return () => clearInterval(interval);
+        // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
+    }, [dispatch, refresh])
 
 
     //updates allUsers state each time data is fetched from axios
-    useEffect(() => {
+    useEffect( () => {
         setAllUsers(prevState => {
             let updatedUser
-
             //form new user data for state merge
             if(prevState.length > 0){
-                updatedUser = allUsers.map(user => user.id === currentUsers[0].id ? {
+
+                 updatedUser = allUsers.map(user => user.id === allUsers[selectValue].id ? {
                     id: user.id,
                     name: user.name,
                     coordinates: [...prevState[currentUsers[0].id].coordinates, ...currentUsers[0].coordinates],
@@ -86,22 +100,6 @@ function App() {
     }, [currentUsers]) // eslint-disable-line
 
 
-    useEffect(() => {
-        let interval
-        if(refresh) {
-            const MINUTE_MS = 4000;// update frequency
-
-             interval = setInterval(() => {
-                dispatch(ActionCreators.refreshUsers())
-            }, MINUTE_MS);
-        }
-
-        return () => clearInterval(interval);
-         // This represents the unmount function, in which you need to clear your interval to prevent memory leaks.
-    }, [dispatch, refresh])
-
-
-
 //fetch currentUsers (single/multiple)
     const handleChange = (e) => {
         setSelectValue(+e.target.value)
@@ -117,6 +115,7 @@ function App() {
         )
 
     }
+
 
 
     return (

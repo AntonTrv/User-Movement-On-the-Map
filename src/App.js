@@ -124,7 +124,7 @@ function App() {
         <div className="App">
             {
                 <>
-                    {allUsers.length &&  <SelectWrapper>
+                    {allUsers.length ?  <SelectWrapper>
                         <FormControl className={classes.formControl}>
                             <InputLabel id="demo-simple-select-label">Choose a user</InputLabel>
                             <Select
@@ -137,10 +137,10 @@ function App() {
                                 )}
                             </Select>
                         </FormControl>
-                    </SelectWrapper>}
+                    </SelectWrapper> : null}
 
                     {loading && <Preloader/>}
-                    {(allUsers.length) && <Table activeUser={allUsers[selectValue]}/>}
+                    {allUsers.length ? <Table activeUser={allUsers[selectValue]}/> : null}
 
                 </>
             }
